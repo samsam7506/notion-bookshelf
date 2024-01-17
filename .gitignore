@@ -1,0 +1,5 @@
+# Environment variables containing API credentials
+.env
+
+# Directory for Node.js dependencies
+node_modules/
