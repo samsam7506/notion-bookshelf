@@ -25,3 +25,9 @@ Then, to run the JavaScript file using the Node.js interpreter, run the followin
 `node main.js '<book-title>'`<br>
 
 Replace `'<book-title>'` with the title of the book you are looking to search for. Make sure to wrap the title in either single quotes or double quotes so the program can parse the command line arguments as intended.
+
+## Screenshots
+<p align="center">
+    <img width=959px src=https://github.com/cadedupont/notion-bookshelf/assets/98860495/cbbcba3d-5b10-47dd-96d4-1789f7a8d1e5">
+    <img src="https://github.com/cadedupont/notion-bookshelf/assets/98860495/71e62ec7-5fe6-41ee-bca6-b71310b0966c">
+</p>
