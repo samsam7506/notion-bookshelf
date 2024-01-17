@@ -28,6 +28,6 @@ Replace `'<book-title>'` with the title of the book you are looking to search fo
 
 ## Screenshots
 <p align="center">
-    <img width=959px src=https://github.com/cadedupont/notion-bookshelf/assets/98860495/cbbcba3d-5b10-47dd-96d4-1789f7a8d1e5">
+    <img width=959px src="https://github.com/cadedupont/notion-bookshelf/assets/98860495/cbbcba3d-5b10-47dd-96d4-1789f7a8d1e5">
     <img src="https://github.com/cadedupont/notion-bookshelf/assets/98860495/71e62ec7-5fe6-41ee-bca6-b71310b0966c">
 </p>
