@@ -1,5 +1,9 @@
-require('dotenv').config();
-const { Client } = require('@notionhq/client');
+// Author: Cade DuPont
+// Date: 29 January 2024
+// Description: This script is used to add books to a Notion database. It takes a book title as an argument, and then uses the Google Books API to find the book and add the rest of its information to the virtual bookshelf.
+
+require("dotenv").config();
+const { Client } = require("@notionhq/client");
 
 // Load environment variables
 const { NOTION_TOKEN, NOTION_DATABASE_ID, GOOGLE_BOOKS_API_KEY } = process.env;
@@ -7,11 +11,11 @@ const { NOTION_TOKEN, NOTION_DATABASE_ID, GOOGLE_BOOKS_API_KEY } = process.env;
 // If no query is provided, exit with error
 const query = process.argv[2];
 if (!query) {
-    throw new Error('No query provided');
+    throw new Error("No query provided");
 }
 
 // Form Google Books API URL
-const google_books_url = `https://www.googleapis.com/books/v1/volumes?q=${query.split('+')}&key=${GOOGLE_BOOKS_API_KEY}`
+const google_books_url = `https://www.googleapis.com/books/v1/volumes?q=${query.split("+")}&key=${GOOGLE_BOOKS_API_KEY}`
 
 // Create Notion API instance
 const notion = new Client({
@@ -68,7 +72,7 @@ fetch(google_books_url)
 
         // If book is not found, exit with error
         if (!book || book.title.toLowerCase() !== query.toLowerCase()) {
-            throw new Error('Book not found');
+            throw new Error("Book not found");
         }
 
         // Get pages from database
@@ -78,12 +82,12 @@ fetch(google_books_url)
 
             // If page exists, exit with error; otherwise, create page
             if (page !== undefined) {
-                throw new Error('Book already exists in database');
+                throw new Error("Book already exists in database");
             } else {
                 // Create book page in database; add title, author, ISBN, cover image, and description
                 notion.pages.create({
                     cover: {
-                        type: 'external',
+                        type: "external",
                         external: {
                             url: book.imageLinks.thumbnail
                         }
@@ -113,7 +117,7 @@ fetch(google_books_url)
                                 }
                             }]
                         },
-                        'Page Count': {
+                        "Page Count": {
                             number: book.pageCount
                         },
                         ISBN: {
@@ -126,17 +130,17 @@ fetch(google_books_url)
                     },
                     children: [
                         {
-                            object: 'block',
+                            object: "block",
                             heading_3: {
                                 rich_text: [{
                                     text: {
-                                        content: 'Description'
+                                        content: "Description"
                                     }
                                 }]
                             }
                         },
                         {
-                            object: 'block',
+                            object: "block",
                             paragraph: {
                                 rich_text: [{
                                     text: {

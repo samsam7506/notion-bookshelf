@@ -1,33 +1,79 @@
 # Notion Bookshelf
 
-JavaScript application for querying Google Books for a given book title and adding all of the book's information as a page to a Notion database.
+JavaScript application to search Google Books API by book title and save the rest of the book information to a Notion database.
 
-## Setting up API keys
-Before attempting to run the program, ensure that you have a Notion database present in your workspace.
+## Prerequisites
 
-You will need to install Node.js on your machine and create a `.env` file in the root directory of the project containing the following:
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [Google Books API](https://developers.google.com/books/docs/v1/using) key
+- [Notion API](https://developers.notion.com/) key
+- Notion [account](https://www.notion.so/) and [database](https://www.notion.so/help/guides/creating-a-database)
 
+## Downloading the Project
+
+Either clone this repository by running the below command in your machine's terminal or download the source code as a ZIP.
+
+```bash
+$ git clone https://github.com/cadedupont/notion-bookshelf.git
 ```
-NOTION_TOKEN=your_key_here
-NOTION_DATABASE_ID=your_key_here
-GOOGLE_BOOKS_API_KEY=your_key_here
+
+Navigate to the root directory of the project:
+
+```bash
+$ cd /path/to/notion-bookshelf
 ```
 
-Replace every instance of `your_key_here` with the corresponding [Notion](https://developers.notion.com/) and [Google Books](https://developers.google.com/books/docs/overview) API keys. The `NOTION_DATABASE_ID` is a string of letters and numbers identifying the database in the URL. A short guide to finding this string can be found [here](https://stackoverflow.com/a/69860478).
+## Setting Up API Keys
 
-## To Run
-The program is currently configured to run using Node.js. Run the following command at the project's root directory to install dependencies from the `package.json` file:<br>
+Once you have the source code, you will need to create a `.env` file in the root directory of the project. A `.env.example` file has been provided as a template with the following contents:
 
-`npm install`
+```bash
+NOTION_TOKEN='your_key_here'
+NOTION_DATABASE_ID='your_key_here'
+GOOGLE_BOOKS_API_KEY='your_key_here'
+```
 
-Then, to run the JavaScript file using the Node.js interpreter, run the following command:<br>
+Replace every instance of `your_key_here` with the appropriate value in your `.env` file.
 
-`node main.js '<book-title>'`<br>
+### Notion API Key
 
-Replace `'<book-title>'` with the title of the book you are looking to search for. Make sure to wrap the title in either single quotes or double quotes so the program can parse the command line arguments as intended.
+To get your Notion API key, go to [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations) and click the `New integration` button. Give your integration a name and click `Submit`. You will then be provided with a `Internal Integration Token` that you can use as your `NOTION_TOKEN` value.
 
-## Screenshots
-<p align="center">
-    <img width=959px src="https://github.com/cadedupont/notion-bookshelf/assets/98860495/cbbcba3d-5b10-47dd-96d4-1789f7a8d1e5">
-    <img src="https://github.com/cadedupont/notion-bookshelf/assets/98860495/71e62ec7-5fe6-41ee-bca6-b71310b0966c">
-</p>
+### Notion Database ID
+
+To get your Notion database ID, go to the Notion page containing the database you want to use. Click the `...` button in the top right corner of the database, click `Copy link to view` near the bottom of the dropdown menu, and paste the link into your browser's address bar. The link will look something like this:
+
+```bash
+https://www.notion.so/1234567890abcdef1234567890abcdef?v=9876543210fedcba9876543210fedcba
+```
+
+The value before the `?v=` is your database ID. You can use this value as your `NOTION_DATABASE_ID` value. In this example, the database ID is `1234567890abcdef1234567890abcdef`.
+
+You will also need to add your Notion integration to the database. To do this, click the `...` button in the top right corner of the page, click `Add connections` near the bottom of the dropdown menu, navigate to the name of your integration you chose earlier, and click it. You will be prompted for confirmation that this integration can access your page and its child pages. Click `Confirm`.
+
+### Google Books API Key
+
+To get your Google Books API key, go [https://console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials) and click the `Create Credentials` button. Select `API Key` from the dropdown menu. You will then be provided with a string of characters that you can use as your `GOOGLE_BOOKS_API_KEY` value.
+
+## Installing Dependencies
+
+Once you have your API keys set up, you can install the project's dependencies by running the following command in your terminal:
+
+```bash
+$ npm install
+```
+
+## Running the Application
+
+Once you install the requried dependencies, you are set to run the application. Run the following command in your terminal:
+
+```bash
+$ node notion-bookshelf.js '<book_title>'
+```
+
+Replace `<book_title>` with the title of the book you want to search for. The application will then search the Google Books API for the book title and save the book information to your Notion database.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
