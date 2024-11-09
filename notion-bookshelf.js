@@ -6,7 +6,7 @@ require("dotenv").config();
 const { Client } = require("@notionhq/client");
 
 // Load environment variables
-const { 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, 139d2c7ea3238037aca6d433d279239d, GOOGLE_BOOKS_API_KEY } = process.env;
+const { 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, 139d2c7ea3238037aca6d433d279239d, AIzaSyDa_19HcO1TZz16YTr_Jmm1GYm5EEdcl2E } = process.env;
 
 // If no query is provided, exit with error
 const query = process.argv[2];
